@@ -2,10 +2,12 @@ import React from "react";
 import Logo from "../assets/logo.png";
 import MetaMask from "../assets/meta.png";
 import plus from "../assets/add.png";
+import { UseContractProvider } from "../context/Context";
 
 const Navbar = () => {
   const [active, setActive] = React.useState("All");
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const { Connect } = UseContractProvider();
 
   const HandleActive = (actState) => {
     setActive(actState);
@@ -60,7 +62,7 @@ const Navbar = () => {
 
       {/* Buttons for Large Screens */}
       <div className="hidden lg:flex gap-5">
-        <button className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold">
+        <button className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold" onClick={Connect}>
           Connect <img src={MetaMask} className="h-5" alt="MetaMask" />
         </button>
         <button className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold">
@@ -121,7 +123,7 @@ const Navbar = () => {
               other
             </div>
             <div className="flex gap-5 mt-14">
-              <button className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold">
+              <button className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold" onClick={Connect}>
                 Connect <img src={MetaMask} className="h-5" alt="MetaMask" />
               </button>
               <button className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold">

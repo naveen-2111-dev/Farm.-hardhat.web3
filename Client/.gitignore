@@ -15,6 +15,9 @@ dist-ssr
 #environment
 .env
 
+#todo
+my.todo
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
