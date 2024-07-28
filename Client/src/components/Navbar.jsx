@@ -3,11 +3,13 @@ import Logo from "../assets/logo.png";
 import MetaMask from "../assets/meta.png";
 import plus from "../assets/add.png";
 import { UseContractProvider } from "../context/Context";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setActive] = React.useState("All");
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { Connect } = UseContractProvider();
+  const navigate = useNavigate();
 
   const HandleActive = (actState) => {
     setActive(actState);
@@ -18,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-black text-white flex justify-between items-center p-4 relative">
+    <div className="bg-black text-white flex justify-between items-center p-4 relative box">
       {/* Logo and Title */}
       <div className="flex items-center">
         <img src={Logo} className="h-12" alt="Logo" />
@@ -62,10 +64,16 @@ const Navbar = () => {
 
       {/* Buttons for Large Screens */}
       <div className="hidden lg:flex gap-5">
-        <button className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold" onClick={Connect}>
+        <button
+          className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
+          onClick={Connect}
+        >
           Connect <img src={MetaMask} className="h-5" alt="MetaMask" />
         </button>
-        <button className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold">
+        <button
+          className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
+          onClick={()=>navigate("/auth")}
+        >
           Farmer <img src={plus} className="h-5" alt="Plus" />
         </button>
       </div>
@@ -123,10 +131,16 @@ const Navbar = () => {
               other
             </div>
             <div className="flex gap-5 mt-14">
-              <button className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold" onClick={Connect}>
+              <button
+                className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
+                onClick={Connect}
+              >
                 Connect <img src={MetaMask} className="h-5" alt="MetaMask" />
               </button>
-              <button className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold">
+              <button
+                className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
+                onClick={()=> navigate("/auth")}
+              >
                 Farmer <img src={plus} className="h-5" alt="Plus" />
               </button>
             </div>
