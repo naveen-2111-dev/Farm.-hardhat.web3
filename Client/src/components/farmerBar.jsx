@@ -1,11 +1,10 @@
 import React from "react";
 import Logo from "../assets/logo.png";
 import MetaMask from "../assets/meta.png";
-import plus from "../assets/add.png";
 import { UseContractProvider } from "../context/Context";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const NavbarComponent = () => {
   const [active, setActive] = React.useState("All");
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { Connect } = UseContractProvider();
@@ -19,16 +18,8 @@ const Navbar = () => {
         navigate("/");
         break;
 
-      case "veg":
-        navigate("/veg");
-        break;
-
-      case "fert":
-        navigate("/fert");
-        break;
-
-      case "other":
-        navigate("/other");
+      case "add":
+        navigate("/addprod");
         break;
 
       default:
@@ -60,22 +51,10 @@ const Navbar = () => {
           All
         </div>
         <div
-          className={active === "veg" ? "bg-bg p-2 rounded-lg" : ""}
-          onClick={() => HandleActive("veg")}
+          className={active === "add" ? "bg-bg p-2 rounded-lg" : ""}
+          onClick={() => HandleActive("add")}
         >
-          vegetables
-        </div>
-        <div
-          className={active === "fert" ? "bg-bg p-2 rounded-lg" : ""}
-          onClick={() => HandleActive("fert")}
-        >
-          fertilizers
-        </div>
-        <div
-          className={active === "other" ? "bg-bg p-2 rounded-lg" : ""}
-          onClick={() => HandleActive("other")}
-        >
-          other
+          Add Products
         </div>
       </div>
 
@@ -86,12 +65,6 @@ const Navbar = () => {
           onClick={Connect}
         >
           Connect <img src={MetaMask} className="h-5" alt="MetaMask" />
-        </button>
-        <button
-          className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
-          onClick={()=>navigate("/auth")}
-        >
-          Farmer <img src={plus} className="h-5" alt="Plus" />
         </button>
       </div>
 
@@ -128,24 +101,10 @@ const Navbar = () => {
             </div>
             <div
               href="#"
-              className={active === "veg" ? "hover:bg:bg" : ""}
-              onClick={() => HandleActive("veg")}
+              className={active === "add" ? "hover:bg:bg" : ""}
+              onClick={() => HandleActive("add")}
             >
-              vegetables
-            </div>
-            <div
-              href="#"
-              className={active === "fert" ? "hover:bg:bg" : ""}
-              onClick={() => HandleActive("fert")}
-            >
-              fertilizers
-            </div>
-            <div
-              href="#"
-              className={active === "other" ? "hover:bg:bg" : ""}
-              onClick={() => HandleActive("other")}
-            >
-              other
+              Add Products
             </div>
             <div className="flex gap-5 mt-14">
               <button
@@ -153,12 +112,6 @@ const Navbar = () => {
                 onClick={Connect}
               >
                 Connect <img src={MetaMask} className="h-5" alt="MetaMask" />
-              </button>
-              <button
-                className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
-                onClick={()=> navigate("/auth")}
-              >
-                Farmer <img src={plus} className="h-5" alt="Plus" />
               </button>
             </div>
           </div>
@@ -168,4 +121,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarComponent;
