@@ -3,10 +3,10 @@ import NavbarComponent from "../../components/farmerBar";
 
 const FarmerConsole = () => {
   return (
-    <div>
-      <NavbarComponent/>
+    <div className="">
+      {/* <NavbarComponent /> */}
     </div>
-  ) 
+  ); 
 }
 
 export default FarmerConsole

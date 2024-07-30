@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
-import Abi from "../../../backend/artifacts/contracts/Farmer.sol/Farmer.json";
+import Abi from "../Json/contract.json";
 
 const ContraContext = createContext();
 
