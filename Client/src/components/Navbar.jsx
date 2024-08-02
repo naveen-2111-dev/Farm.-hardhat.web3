@@ -4,12 +4,20 @@ import MetaMask from "../assets/meta.png";
 import plus from "../assets/add.png";
 import { UseContractProvider } from "../context/Context";
 import { useNavigate } from "react-router-dom";
+import { AiFillLock } from "react-icons/ai";
 
 const Navbar = () => {
   const [active, setActive] = React.useState("All");
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const { Connect } = UseContractProvider();
+  const { Connect, isConnected, decAcc, decBal } = UseContractProvider();
   const navigate = useNavigate();
+
+  const text = decAcc.slice(0, 3) + "..." + decAcc.slice(-3);
+  // const formatNumber = (num, decimalPlaces) => {
+  //   return parseFloat(num.toFixed(decimalPlaces));
+  // };
+
+  // const number = formatNumber(decBal, 4);
 
   const HandleActive = (actState) => {
     setActive(actState);
@@ -85,11 +93,25 @@ const Navbar = () => {
           className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
           onClick={Connect}
         >
-          Connect <img src={MetaMask} className="h-5" alt="MetaMask" />
+          {isConnected ? (
+            <>
+              Connect <img src={MetaMask} className="h-5" alt="MetaMask" />
+            </>
+          ) : (
+            <span className="flex flex-col gap-1 text-left">
+              <span className="font-semibold text-gray-300">
+                <div className="flex items-center gap-4">
+                  {text || "Connect Wallet"}{" "}
+                  <AiFillLock size={16} color="orange" />
+                </div>
+              </span>
+              <span className="text-gray-300">{decBal || "No Balance"}</span>
+            </span>
+          )}
         </button>
         <button
           className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
-          onClick={()=>navigate("/auth")}
+          onClick={() => navigate("/auth")}
         >
           Farmer <img src={plus} className="h-5" alt="Plus" />
         </button>
@@ -152,11 +174,25 @@ const Navbar = () => {
                 className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
                 onClick={Connect}
               >
-                Connect <img src={MetaMask} className="h-5" alt="MetaMask" />
+                {isConnected ? (
+                  <>
+                    Connect{" "}
+                    <img src={MetaMask} className="h-5" alt="MetaMask" />
+                  </>
+                ) : (
+                  <span className="flex flex-col text-left">
+                    <span className="font-semibold text-gray-300">
+                      {text || "Connect Wallet"}
+                    </span>
+                    <span className="text-gray-300">
+                      {decBal || "No Balance"}
+                    </span>
+                  </span>
+                )}
               </button>
               <button
                 className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
-                onClick={()=> navigate("/auth")}
+                onClick={() => navigate("/auth")}
               >
                 Farmer <img src={plus} className="h-5" alt="Plus" />
               </button>
