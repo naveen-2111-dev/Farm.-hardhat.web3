@@ -94,10 +94,6 @@ const Navbar = () => {
           onClick={Connect}
         >
           {isConnected ? (
-            <>
-              Connect <img src={MetaMask} className="h-5" alt="MetaMask" />
-            </>
-          ) : (
             <span className="flex flex-col gap-1 text-left">
               <span className="font-semibold text-gray-300">
                 <div className="flex items-center gap-4">
@@ -107,8 +103,13 @@ const Navbar = () => {
               </span>
               <span className="text-gray-300">{decBal || "No Balance"}</span>
             </span>
+          ) : (
+            <>
+              Connect <img src={MetaMask} className="h-5" alt="MetaMask" />
+            </>
           )}
         </button>
+
         <button
           className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
           onClick={() => navigate("/auth")}
