@@ -4,7 +4,7 @@ import NavbarComponent from "../../components/farmerBar";
 const FarmerConsole = () => {
   return (
     <div className="">
-      {/* <NavbarComponent /> */}
+      <NavbarComponent />
     </div>
   ); 
 }
