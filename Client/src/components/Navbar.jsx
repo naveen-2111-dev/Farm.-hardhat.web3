@@ -12,6 +12,15 @@ const Navbar = () => {
   const { Connect, isConnected, decAcc, decBal } = UseContractProvider();
   const navigate = useNavigate();
 
+  const handleNavigation = () => {
+    if (isConnected) {
+      navigate("/auth");
+    } else {
+      // Optional: Display an alert or message to the user
+      alert("You need to connect your wallet to access this page.");
+    }
+  };
+
   const text = decAcc.slice(0, 3) + "..." + decAcc.slice(-3);
   // const formatNumber = (num, decimalPlaces) => {
   //   return parseFloat(num.toFixed(decimalPlaces));
@@ -112,7 +121,8 @@ const Navbar = () => {
 
         <button
           className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
-          onClick={() => navigate("/auth")}
+          onClick={handleNavigation}
+          disabled={!isConnected} // Disable button if not connected
         >
           Farmer <img src={plus} className="h-5" alt="Plus" />
         </button>
@@ -144,28 +154,28 @@ const Navbar = () => {
           <div className="flex flex-col items-center gap-5 p-4">
             <div
               href="#"
-              className={active === "All" ? "hover:bg:bg" : ""}
+              className={active === "All" ? "hover:bg-bg" : ""}
               onClick={() => HandleActive("All")}
             >
               All
             </div>
             <div
               href="#"
-              className={active === "veg" ? "hover:bg:bg" : ""}
+              className={active === "veg" ? "hover:bg-bg" : ""}
               onClick={() => HandleActive("veg")}
             >
               vegetables
             </div>
             <div
               href="#"
-              className={active === "fert" ? "hover:bg:bg" : ""}
+              className={active === "fert" ? "hover:bg-bg" : ""}
               onClick={() => HandleActive("fert")}
             >
               fertilizers
             </div>
             <div
               href="#"
-              className={active === "other" ? "hover:bg:bg" : ""}
+              className={active === "other" ? "hover:bg-bg" : ""}
               onClick={() => HandleActive("other")}
             >
               other
@@ -193,7 +203,8 @@ const Navbar = () => {
               </button>
               <button
                 className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
-                onClick={() => navigate("/auth")}
+                onClick={handleNavigation}
+                disabled={!isConnected} // Disable button if not connected
               >
                 Farmer <img src={plus} className="h-5" alt="Plus" />
               </button>

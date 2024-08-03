@@ -42,81 +42,16 @@ const NavbarComponent = () => {
         </div>
       </div>
 
-      {/* Navbar Elements for Large Screens */}
-      <div className="hidden lg:flex gap-5 items-center">
-        <div
-          className={active === "All" ? "bg-bg p-2 rounded-lg" : ""}
-          onClick={() => HandleActive("All")}
-        >
-          All
-        </div>
-        <div
-          className={active === "add" ? "bg-bg p-2 rounded-lg" : ""}
-          onClick={() => HandleActive("add")}
-        >
-          Add Products
-        </div>
-      </div>
-
       {/* Buttons for Large Screens */}
-      <div className="hidden lg:flex gap-5">
+      <div>
         <button
-          className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
+          className="buttonclass group flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
           onClick={Connect}
         >
-          Connect <img src={MetaMask} className="h-5" alt="MetaMask" />
+          <span className="hidden group-hover:block lg:block">Connect</span>
+          <img src={MetaMask} className="h-5" alt="MetaMask" />
         </button>
       </div>
-
-      {/* Mobile Menu Button */}
-      <div className="lg:hidden">
-        <button onClick={toggleMenu} className="text-white bg-transparent">
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
-            ></path>
-          </svg>
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="lg:hidden absolute top-16 text-center left-0 w-full bg-black text-white">
-          <div className="flex flex-col items-center gap-5 p-4">
-            <div
-              href="#"
-              className={active === "All" ? "hover:bg:bg" : ""}
-              onClick={() => HandleActive("All")}
-            >
-              All
-            </div>
-            <div
-              href="#"
-              className={active === "add" ? "hover:bg:bg" : ""}
-              onClick={() => HandleActive("add")}
-            >
-              Add Products
-            </div>
-            <div className="flex gap-5 mt-14">
-              <button
-                className="buttonclass flex items-center gap-2 bg-bg p-3 text-xs rounded-lg font-bold"
-                onClick={Connect}
-              >
-                Connect <img src={MetaMask} className="h-5" alt="MetaMask" />
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

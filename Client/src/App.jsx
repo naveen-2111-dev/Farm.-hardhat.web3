@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import {
   FarmerAuth,
   FarmerConsole,
+  FarmerLogin,
   Fert,
   Home,
   Other,
@@ -20,6 +20,7 @@ const App = () => {
         <Route path="/fert" element={<Fert />} />
         <Route path="/other" element={<Other />} />
         <Route path="/console" element={<FarmerConsole />} />
+        <Route path="/log" element={<FarmerLogin />} />
       </Routes>
     </div>
   );
